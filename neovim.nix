@@ -14,6 +14,9 @@ neovim.override {
       " TextEdit might fail if hidden is not set.
       set hidden
 
+      " Clipboard should work with X selections/clipboard
+      set clipboard+=unnamedplus
+
       " for a sane search feature
       set ignorecase
       set smartcase
