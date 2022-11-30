@@ -270,7 +270,7 @@ neovim.override {
       nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
       " Toggle Inlay Hints
-      nnoremap <silent> <space>i :CocCommand document.toggleInlayHints<CR>
+      nnoremap <silent> <space>i :CocCommand document.toggleInlayHint<CR>
     '';
     packages.myVimPackage = {
       # see examples below how to use custom packages
