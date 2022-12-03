@@ -286,6 +286,7 @@ neovim.override {
         coc-tsserver
         coc-prettier
         coc-diagnostic
+        coc-toml
         denite
         denite-nvim
         denite-extra
