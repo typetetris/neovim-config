@@ -94,14 +94,23 @@ neovim.override {
       let g:enable_treefmt = 1
 
       function CallTreeFmt()
-        if g:enable_treefmt && executable("treefmt")
-          !treefmt -q
+        silent !clear
+        if g:enable_treefmt && executable('treefmt')
+          let command = 'treefmt --quiet --stdin ' . expand('%')
+          let formatted_content = systemlist(command, getbufline("%",0,"$"))
+          if v:shell_error ==? 0
+            let cursor_pos = getcurpos()
+            execute '%!' . command
+            call setpos('.', cursor_pos)
+          else
+            echom ("Failed to format buffer: " . expand("%"))
+          endif
         endif
       endfunction
 
       augroup mygroup3
       autocmd!
-      autocmd BufWritePost * :call CallTreeFmt()
+      autocmd BufWritePre * :call CallTreeFmt()
       augroup END
 
       set makeprg=cabal\ build\ --disable-optimization
